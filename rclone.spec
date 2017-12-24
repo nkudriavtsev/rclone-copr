@@ -1,7 +1,7 @@
 %global _dwz_low_mem_die_limit 0
 
 Name:           rclone
-Version:        1.38
+Version:        1.39
 Release:        1%{?dist}
 Summary:        rsync for cloud storage
 License:        MIT 
@@ -95,18 +95,27 @@ install -p -D -m 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 
 
 %changelog
+* Sun Dec 24 2017 Robert-André Mauchin <zebob.m@gmail.com> - 1.39-1
+- Update to version 1.39
+
 * Sun Oct 01 2017 Robert-André Mauchin <zebob.m@gmail.com> - 1.38-1
 - Update to version 1.38
+
 * Fri Jul 28 2017 Robert-André Mauchin <zebob.m@gmail.com> - 1.37-2
 - Unbundled revision
+
 * Sun Jul 23 2017 Robert-André Mauchin <zebob.m@gmail.com> - 1.37-1
 - Update to version 1.37
+
 * Thu Jul 20 2017 Robert-André Mauchin <zebob.m@gmail.com> - 1.36-2
 - Update to Fedora Packaging Guidelines specification
+
 * Sat Mar 25 2017 Robert-André Mauchin <zebob.m@gmail.com> - 1.36-1
 - Update to version 1.36
+
 * Fri Jan 06 2017 Robert-André Mauchin <zebob.m@gmail.com> - 1.35-1
 - Update to version 1.35
+
 * Sun Dec 11 2016 Robert-André Mauchin <zebob.m@gmail.com> - 1.34-1
 - Initial RPM release
 
