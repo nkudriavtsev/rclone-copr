@@ -2,7 +2,7 @@
 
 Name:           rclone
 Version:        1.39
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        rsync for cloud storage
 License:        MIT 
 URL:            http://rclone.org/
@@ -95,6 +95,9 @@ install -p -D -m 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 
 
 %changelog
+* Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.39-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Sun Dec 24 2017 Robert-André Mauchin <zebob.m@gmail.com> - 1.39-1
 - Update to version 1.39
 
