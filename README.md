@@ -1,3 +1,0 @@
-# rclone
-
-The rclone package
