@@ -1,5 +1,5 @@
 %global goipath         github.com/ncw/rclone
-Version:                1.41
+Version:                1.42
 
 %global common_description %{expand:
 Rclone is a command line program to sync files and directories to and 
@@ -107,6 +107,9 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 
 
 %changelog
+* Thu Jun 28 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.42-1
+- Update to version 1.42
+
 * Tue Mar 20 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.41-1
 - Update to version 1.41
 - Use new Go packaging
