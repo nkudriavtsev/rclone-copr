@@ -8,7 +8,7 @@ from various cloud services.}
 %gometa
 
 Name:           rclone
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Rsync for cloud storage
 License:        MIT
 URL:            http://rclone.org/
@@ -107,6 +107,9 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 
 
 %changelog
+* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.42-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Thu Jun 28 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.42-1
 - Update to version 1.42
 
