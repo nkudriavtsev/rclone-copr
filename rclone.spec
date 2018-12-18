@@ -35,6 +35,7 @@ from various cloud services.
 mkdir -p ./_build/src/github.com/ncw/
 ln -s $(pwd) ./_build/src/github.com/ncw/rclone
 export GOPATH=$(pwd)/_build:%{gopath}
+export GOFLAGS=-mod=vendor
 
 %gobuild -o rclone
 
@@ -54,6 +55,7 @@ install -p -D -m 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 %changelog
 * Tue Dec 18 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.45-1
 - Update to version 1.45
+- Fix #1659644
 
 * Mon Nov 05 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.44-1
 - Update to version 1.44
