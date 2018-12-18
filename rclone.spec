@@ -1,5 +1,5 @@
 %global goipath         github.com/ncw/rclone
-Version:                1.44
+Version:                1.45
 
 %global common_description %{expand:
 Rclone is a command line program to sync files and directories to and 
@@ -16,7 +16,8 @@ Source0:        %{gosource}
 
 BuildRequires: golang(bazil.org/fuse)
 BuildRequires: golang(bazil.org/fuse/fs)
-BuildRequires: golang(github.com/Azure/azure-storage-blob-go/2018-03-28/azblob)
+BuildRequires: golang(github.com/Azure/azure-pipeline-go/pipeline)
+BuildRequires: golang(github.com/Azure/azure-storage-blob-go/azblob)
 BuildRequires: golang(github.com/Unknwon/goconfig)
 BuildRequires: golang(github.com/a8m/tree)
 BuildRequires: golang(github.com/abbot/go-http-auth)
@@ -35,9 +36,11 @@ BuildRequires: golang(github.com/billziss-gh/cgofuse/fuse)
 BuildRequires: golang(github.com/coreos/bbolt)
 BuildRequires: golang(github.com/djherbis/times)
 BuildRequires: golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox)
+BuildRequires: golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/auth)
 BuildRequires: golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/common)
 BuildRequires: golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/files)
 BuildRequires: golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/sharing)
+BuildRequires: golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/team)
 BuildRequires: golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/users)
 BuildRequires: golang(github.com/goftp/server)
 BuildRequires: golang(github.com/jlaffaye/ftp)
@@ -73,8 +76,8 @@ BuildRequires: golang(golang.org/x/net/webdav)
 BuildRequires: golang(golang.org/x/net/websocket)
 BuildRequires: golang(golang.org/x/oauth2)
 BuildRequires: golang(golang.org/x/oauth2/google)
+BuildRequires: golang(golang.org/x/sync/errgroup)
 BuildRequires: golang(golang.org/x/sys/unix)
-BuildRequires: golang(golang.org/x/sys/windows)
 BuildRequires: golang(golang.org/x/text/unicode/norm)
 BuildRequires: golang(golang.org/x/time/rate)
 BuildRequires: golang(google.golang.org/api/drive/v2)
@@ -109,6 +112,9 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 
 
 %changelog
+* Tue Dec 18 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.45-1
+- Update to version 1.45
+
 * Mon Oct 22 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.44-1
 - Update to version 1.44
 
