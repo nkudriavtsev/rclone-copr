@@ -9,7 +9,7 @@
 }
 
 Name:           rclone
-Version:        1.46
+Version:        1.46.0
 Release:        1%{?dist}
 Summary:        Rsync for cloud storage
 License:        MIT
@@ -53,8 +53,8 @@ install -p -D -m 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 
 
 %changelog
-* Fri Apr 12 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.46-1
-- Release 1.46
+* Fri Apr 12 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.46.0-1
+- Release 1.46.0
 
 * Tue Dec 18 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.45-1
 - Update to version 1.45
