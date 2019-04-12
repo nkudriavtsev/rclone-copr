@@ -9,10 +9,10 @@
 }
 
 Name:           rclone
-Version:        1.45
+Version:        1.46
 Release:        1%{?dist}
-Summary:        rsync for cloud storage
-License:        MIT 
+Summary:        Rsync for cloud storage
+License:        MIT
 URL:            http://rclone.org/
 Source0:        https://github.com/ncw/rclone/archive/v%{version}/%{name}-%{version}.tar.gz
 
@@ -23,7 +23,7 @@ BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}
 
 
 %description
-Rclone is a command line program to sync files and directories to and 
+Rclone is a command line program to sync files and directories to and
 from various cloud services.
 
 
@@ -53,6 +53,9 @@ install -p -D -m 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 
 
 %changelog
+* Fri Apr 12 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.46-1
+- Release 1.46
+
 * Tue Dec 18 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.45-1
 - Update to version 1.45
 - Fix #1659644
