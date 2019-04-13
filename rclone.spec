@@ -3,7 +3,7 @@
 
 # https://github.com/ncw/rclone
 %global goipath         github.com/ncw/rclone
-Version:                1.46.0
+Version:                1.47.0
 
 %gometa
 
@@ -52,6 +52,9 @@ BuildRequires:  golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/team
 BuildRequires:  golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/users)
 BuildRequires:  golang(github.com/goftp/server)
 BuildRequires:  golang(github.com/jlaffaye/ftp)
+BuildRequires:  golang(github.com/koofr/go-httpclient)
+BuildRequires:  golang(github.com/koofr/go-koofrclient)
+BuildRequires:  golang(github.com/mattn/go-runewidth)
 BuildRequires:  golang(github.com/ncw/go-acd)
 BuildRequires:  golang(github.com/ncw/swift)
 BuildRequires:  golang(github.com/nsf/termbox-go)
@@ -124,6 +127,9 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 
 
 %changelog
+* Sat Apr 13 18:34:07 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.47.0-1
+- Release 1.47.0 (#1674166)
+
 * Sat Apr 06 21:17:09 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.46.0-1
 - Release 1.46.0
 
