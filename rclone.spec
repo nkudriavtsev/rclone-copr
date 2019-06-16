@@ -3,7 +3,7 @@
 
 # https://github.com/ncw/rclone
 %global goipath         github.com/ncw/rclone
-Version:                1.47.0
+Version:                1.48.0
 
 %gometa
 
@@ -101,22 +101,19 @@ BuildRequires:  golang(gopkg.in/yaml.v2)
 %description
 %{common_description}
 
-
 %prep
 %forgeautosetup -p1
 rm -rf vendor
 
-
 %build
-LDFLAGS="-X github.com/ncw/rclone/fs.Version=v%{version}"
+LDFLAGS="-X github.com/ncw/rclone/fs.Version=v%{version} "
 %gobuildroot
 %gobuild -o _bin/rclone %{goipath}
 
-
 %install
-install -Dpm 0755 _bin/rclone %{buildroot}%{_bindir}/rclone
+install -m 0755 -vd                     %{buildroot}%{_bindir}
+install -m 0755 -vp _bin/*              %{buildroot}%{_bindir}/
 install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
-
 
 %files
 %license COPYING
@@ -125,8 +122,10 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 %{_bindir}/rclone
 %{_mandir}/man1/rclone.1*
 
-
 %changelog
+* Sun Jun 16 16:26:43 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.48.0-1
+- Release 1.48.0 (#1720839)
+
 * Sat Apr 13 18:34:07 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.47.0-1
 - Release 1.47.0 (#1674166)
 
@@ -178,4 +177,3 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 
 * Sun Dec 11 2016 Robert-André Mauchin <zebob.m@gmail.com> - 1.34-1
 - Initial RPM release
-
