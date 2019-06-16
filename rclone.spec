@@ -3,13 +3,17 @@
 
 # https://github.com/ncw/rclone
 %global goipath         github.com/ncw/rclone
-Version:                1.47.0
+Version:                1.48.0
 
 %gometa
 
 %global common_description %{expand:
 Rclone is a command line program to sync files and directories to and
 from various cloud services.}
+
+%global golicenses      COPYING
+%global godocs          docs CONTRIBUTING.md MAINTAINERS.md MANUAL.md\\\
+                        README.md RELEASE.md
 
 Name:           rclone
 Release:        1%{?dist}
@@ -55,6 +59,7 @@ BuildRequires:  golang(github.com/jlaffaye/ftp)
 BuildRequires:  golang(github.com/koofr/go-httpclient)
 BuildRequires:  golang(github.com/koofr/go-koofrclient)
 BuildRequires:  golang(github.com/mattn/go-runewidth)
+BuildRequires:  golang(github.com/mitchellh/go-homedir)
 BuildRequires:  golang(github.com/ncw/go-acd)
 BuildRequires:  golang(github.com/ncw/swift)
 BuildRequires:  golang(github.com/nsf/termbox-go)
@@ -80,7 +85,6 @@ BuildRequires:  golang(golang.org/x/crypto/nacl/secretbox)
 BuildRequires:  golang(golang.org/x/crypto/scrypt)
 BuildRequires:  golang(golang.org/x/crypto/ssh)
 BuildRequires:  golang(golang.org/x/crypto/ssh/terminal)
-BuildRequires:  golang(golang.org/x/net/context)
 BuildRequires:  golang(golang.org/x/net/html)
 BuildRequires:  golang(golang.org/x/net/http2)
 BuildRequires:  golang(golang.org/x/net/publicsuffix)
@@ -101,22 +105,17 @@ BuildRequires:  golang(gopkg.in/yaml.v2)
 %description
 %{common_description}
 
-
 %prep
-%forgeautosetup -p1
-rm -rf vendor
-
+%goprep
 
 %build
-LDFLAGS="-X github.com/ncw/rclone/fs.Version=v%{version}"
-%gobuildroot
-%gobuild -o _bin/rclone %{goipath}
-
+LDFLAGS="-X github.com/ncw/rclone/fs.Version=v%{version} "
+%gobuild -o %{gobuilddir}/bin/rclone %{goipath}
 
 %install
-install -Dpm 0755 _bin/rclone %{buildroot}%{_bindir}/rclone
+install -m 0755 -vd                     %{buildroot}%{_bindir}
+install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
-
 
 %files
 %license COPYING
@@ -125,8 +124,10 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 %{_bindir}/rclone
 %{_mandir}/man1/rclone.1*
 
-
 %changelog
+* Sun Jun 16 16:26:43 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.48.0-1
+- Release 1.48.0 (#1720839)
+
 * Sat Apr 13 18:34:07 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.47.0-1
 - Release 1.47.0 (#1674166)
 
