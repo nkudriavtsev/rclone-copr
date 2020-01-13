@@ -3,7 +3,7 @@
 
 # https://github.com/rclone/rclone
 %global goipath         github.com/rclone/rclone
-Version:                1.49.3
+Version:                1.50.2
 
 %gometa
 
@@ -60,6 +60,7 @@ BuildRequires:  golang(github.com/jlaffaye/ftp)
 BuildRequires:  golang(github.com/jzelinskie/whirlpool)
 BuildRequires:  golang(github.com/koofr/go-httpclient)
 BuildRequires:  golang(github.com/koofr/go-koofrclient)
+BuildRequires:  golang(github.com/mattn/go-colorable)
 BuildRequires:  golang(github.com/mattn/go-runewidth)
 BuildRequires:  golang(github.com/mitchellh/go-homedir)
 BuildRequires:  golang(github.com/ncw/go-acd)
@@ -82,6 +83,7 @@ BuildRequires:  golang(github.com/stretchr/testify/require)
 BuildRequires:  golang(github.com/t3rm1n4l/go-mega)
 BuildRequires:  golang(github.com/Unknwon/goconfig)
 BuildRequires:  golang(github.com/xanzy/ssh-agent)
+BuildRequires:  golang(github.com/youmark/pkcs8)
 BuildRequires:  golang(github.com/yunify/qingstor-sdk-go/config)
 BuildRequires:  golang(github.com/yunify/qingstor-sdk-go/request/errors)
 BuildRequires:  golang(github.com/yunify/qingstor-sdk-go/service)
@@ -97,6 +99,7 @@ BuildRequires:  golang(golang.org/x/net/webdav)
 BuildRequires:  golang(golang.org/x/net/websocket)
 BuildRequires:  golang(golang.org/x/oauth2)
 BuildRequires:  golang(golang.org/x/oauth2/google)
+BuildRequires:  golang(golang.org/x/oauth2/jws)
 BuildRequires:  golang(golang.org/x/sync/errgroup)
 BuildRequires:  golang(golang.org/x/sys/unix)
 BuildRequires:  golang(golang.org/x/text/unicode/norm)
@@ -131,6 +134,9 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 %{_mandir}/man1/rclone.1*
 
 %changelog
+* Mon Dec 23 22:22:16 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.50.2-1
+- Release 1.50.2 (#1756764)
+
 * Sat Sep 28 13:00:14 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.49.3-1
 - Release 1.49.3 (#1747050)
 
