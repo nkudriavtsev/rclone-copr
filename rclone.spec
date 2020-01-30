@@ -16,7 +16,7 @@ from various cloud services.}
                         README.md RELEASE.md
 
 Name:           rclone
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Rsync for cloud storage
 
 License:        MIT
@@ -134,6 +134,9 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 %{_mandir}/man1/rclone.1*
 
 %changelog
+* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.50.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Mon Dec 23 22:22:16 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.50.2-1
 - Release 1.50.2 (#1756764)
 
