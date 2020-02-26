@@ -3,7 +3,7 @@
 
 # https://github.com/rclone/rclone
 %global goipath         github.com/rclone/rclone
-Version:                1.50.2
+Version:                1.51.0
 
 %gometa
 
@@ -16,7 +16,7 @@ from various cloud services.}
                         README.md RELEASE.md
 
 Name:           rclone
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Rsync for cloud storage
 
 License:        MIT
@@ -38,15 +38,14 @@ BuildRequires:  golang(github.com/aws/aws-sdk-go/aws/awserr)
 BuildRequires:  golang(github.com/aws/aws-sdk-go/aws/corehandlers)
 BuildRequires:  golang(github.com/aws/aws-sdk-go/aws/credentials)
 BuildRequires:  golang(github.com/aws/aws-sdk-go/aws/credentials/ec2rolecreds)
+BuildRequires:  golang(github.com/aws/aws-sdk-go/aws/credentials/stscreds)
 BuildRequires:  golang(github.com/aws/aws-sdk-go/aws/defaults)
 BuildRequires:  golang(github.com/aws/aws-sdk-go/aws/ec2metadata)
 BuildRequires:  golang(github.com/aws/aws-sdk-go/aws/request)
 BuildRequires:  golang(github.com/aws/aws-sdk-go/aws/session)
 BuildRequires:  golang(github.com/aws/aws-sdk-go/service/s3)
-BuildRequires:  golang(github.com/aws/aws-sdk-go/service/s3/s3manager)
 BuildRequires:  golang(github.com/Azure/azure-pipeline-go/pipeline)
 BuildRequires:  golang(github.com/Azure/azure-storage-blob-go/azblob)
-BuildRequires:  golang(github.com/coreos/bbolt)
 BuildRequires:  golang(github.com/djherbis/times)
 BuildRequires:  golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox)
 BuildRequires:  golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/auth)
@@ -55,7 +54,7 @@ BuildRequires:  golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/file
 BuildRequires:  golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/sharing)
 BuildRequires:  golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/team)
 BuildRequires:  golang(github.com/dropbox/dropbox-sdk-go-unofficial/dropbox/users)
-BuildRequires:  golang(github.com/goftp/server)
+BuildRequires:  golang(go.etcd.io/bbolt)
 BuildRequires:  golang(github.com/jlaffaye/ftp)
 BuildRequires:  golang(github.com/jzelinskie/whirlpool)
 BuildRequires:  golang(github.com/koofr/go-httpclient)
@@ -87,7 +86,7 @@ BuildRequires:  golang(github.com/youmark/pkcs8)
 BuildRequires:  golang(github.com/yunify/qingstor-sdk-go/config)
 BuildRequires:  golang(github.com/yunify/qingstor-sdk-go/request/errors)
 BuildRequires:  golang(github.com/yunify/qingstor-sdk-go/service)
-BuildRequires:  golang(golang.org/x/crypto/bcrypt)
+BuildRequires:  golang(github.com/goftp/server)
 BuildRequires:  golang(golang.org/x/crypto/nacl/secretbox)
 BuildRequires:  golang(golang.org/x/crypto/scrypt)
 BuildRequires:  golang(golang.org/x/crypto/ssh)
@@ -115,7 +114,9 @@ BuildRequires:  golang(gopkg.in/yaml.v2)
 
 %prep
 %goprep
-find . -name "*.go" -exec sed -i "s|github.com/yunify/qingstor-sdk-go/v3|github.com/yunify/qingstor-sdk-go|" "{}" +;
+sed -i "s|github.com/yunify/qingstor-sdk-go/v3|github.com/yunify/qingstor-sdk-go|" $(find . -name "*.go")
+sed -i "s|goftp.io/server|github.com/goftp/server|" $(find . -name "*.go")
+sed -i "s|github.com/etcd-io/bbolt|go.etcd.io/bbolt|" $(find . -name "*.go")
 
 %build
 LDFLAGS="-X github.com/ncw/rclone/fs.Version=v%{version} "
@@ -134,6 +135,9 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 %{_mandir}/man1/rclone.1*
 
 %changelog
+* Wed Feb 26 23:53:19 CET 2020 Robert-André Mauchin <zebob.m@gmail.com> - 1.51.0-1
+- Update to 1.51.0
+
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.50.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
