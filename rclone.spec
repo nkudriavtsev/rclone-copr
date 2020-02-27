@@ -13,7 +13,7 @@
 
 # https://github.com/rclone/rclone
 %global goipath         github.com/rclone/rclone
-Version:                1.50.2
+Version:                1.51.0
 
 %global common_description %{expand:
 Rclone is a command line program to sync files and directories to and
@@ -65,6 +65,9 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 %{_mandir}/man1/rclone.1*
 
 %changelog
+* Thu Feb 27 01:17:56 CET 2020 Robert-André Mauchin <zebob.m@gmail.com> - 1.51.0-1
+- Update to 1.51.0
+
 * Mon Dec 23 22:22:16 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.50.2-1
 - Release 1.50.2 (#1756764)
 
