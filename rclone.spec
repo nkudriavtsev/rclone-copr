@@ -3,7 +3,7 @@
 
 # https://github.com/rclone/rclone
 %global goipath         github.com/rclone/rclone
-Version:                1.51.0
+Version:                1.53.1
 
 %gometa
 
@@ -16,7 +16,7 @@ from various cloud services.}
                         README.md RELEASE.md
 
 Name:           rclone
-Release:        3%{?dist}
+Release:        1%{?dist}
 Summary:        Rsync for cloud storage
 
 License:        MIT
@@ -135,6 +135,9 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 %{_mandir}/man1/rclone.1*
 
 %changelog
+* Sun Sep 13 2020 Fedora Nicholas Kudriavtsev - 1.53.1-1
+- Update to 1.53.2
+
 * Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.51.0-3
 - Second attempt - Rebuilt for
   https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
