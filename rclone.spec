@@ -3,7 +3,7 @@
 
 # https://github.com/rclone/rclone
 %global goipath         github.com/rclone/rclone
-Version:                1.53.1
+Version:                1.58.1
 
 %gometa
 
@@ -135,6 +135,9 @@ install -Dpm 0644 ./rclone.1 %{buildroot}%{_mandir}/man1/rclone.1
 %{_mandir}/man1/rclone.1*
 
 %changelog
+* Mon May 09 2022 Fedora Nicholas Kudriavtsev - 1.58.1-1
+- Update to 1.58.1
+
 * Sun Sep 13 2020 Fedora Nicholas Kudriavtsev - 1.53.1-1
 - Update to 1.53.2
 
